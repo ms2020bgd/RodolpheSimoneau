@@ -53,8 +53,9 @@ object Trainer {
       ********************************************************************************/
 
 
-    val dfClean: DataFrame= spark.read.parquet("src/main/resources/preprocessed/output.parquet")
+    val dfClean_1: DataFrame= spark.read.parquet("src/main/resources/preprocessed/output.parquet")
 
+    val dfClean = dfClean_1.filter($"text".isNotNull)
 
     //création du tokenizer pour chaque mot
     val tokenizer = new RegexTokenizer()
